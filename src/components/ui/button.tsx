@@ -10,14 +10,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-green-500 text-black shadow-md hover:bg-green-600 shadow-[0_0_10px_#00ff00]",
+          "bg-[#7ad95f] text-black shadow-md hover:bg-lime-600 shadow-[0_0_10px_#00ff00]",
         neon: "bg-transparent border border-green-500 text-green-500 shadow-[0_0_10px_#00ff00] hover:bg-green-500 hover:text-black",
         outline: "border border-gray-500 text-white hover:bg-gray-700",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-8 px-3",
-        lg: "h-12 px-6 text-lg",
+        lg: "h-12 px-8 text-lg",
         icon: "size-10",
       },
     },

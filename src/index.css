@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "GothamCond";
+  src: url("/GothamCond-Thin.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+}
+
+.gotham {
+  font-family: "GothamCond";
+}
+
 body {
   background-color: black;
   color: white;
@@ -7,6 +18,13 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.bg-green {
+  background-color: #7ad95f;
+}
+.color-green {
+  color: #7ad95f;
 }
 
 .text-neon {
