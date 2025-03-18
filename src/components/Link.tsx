@@ -7,7 +7,7 @@ interface Props {
 
 const Link = ({ href, children }: Props) => {
   return (
-    <a href={href} className="text-gray-300 hover:text-green-600">
+    <a href={href} className="text-gray-300 hover:text-[#7ad95f]">
       {children}
     </a>
   );
