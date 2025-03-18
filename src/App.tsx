@@ -1,9 +1,12 @@
-import { Button } from "./components/ui/button";
+import { Layout } from "./layouts/Layout";
+import { Home } from "./sections/Home";
 
 function App() {
   return (
     <>
-      <Button variant="default">Join the Club</Button>
+      <Layout>
+        <Home />
+      </Layout>
     </>
   );
 }
