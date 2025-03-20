@@ -1,33 +1,14 @@
 import Heading from "@/components/Heading";
 import { Button } from "@/components/ui/button";
+import { useCryptoData } from "@/hooks/useCryptoData";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ResponsiveContainer, AreaChart, Area } from "recharts";
-import { motion, AnimatePresence } from "framer-motion";
-
-// Определяем тип данных для криптовалют
-type Coin = {
-  id: string;
-  symbol: string;
-  name: string;
-  image: string;
-  current_price: number;
-  sparkline_in_7d: { price: number[] };
-};
-
-const API_URL =
-  "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=true";
+import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 
 export default function Portfolio() {
-  const [coins, setCoins] = useState<Coin[]>([]);
+  const { coins, loading, error } = useCryptoData();
   const [visibleCount, setVisibleCount] = useState(4);
   const [expanded, setExpanded] = useState(false);
-
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => res.json())
-      .then((data: Coin[]) => setCoins(data))
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
 
   // Функция переключения количества монет
   const toggleCoins = () => {
@@ -39,36 +20,28 @@ export default function Portfolio() {
 
   useEffect(() => {
     if (!expanded) {
-      setTimeout(() => setVisibleCount(4), 300); // Ожидание перед уменьшением
+      setTimeout(() => setVisibleCount(4), 300);
     }
   }, [expanded]);
 
   return (
-    <section className="max-w-4xl mx-auto py-16 text-center">
+    <section className="max-w-4xl mx-auto py-16 px-5 lg:px-0 text-center">
       <Heading>Build your own portfolio</Heading>
 
-      {/* Карточки (с фиксом бага высоты) */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 py-6 w-full overflow-hidden"
-        animate={{ height: expanded ? "full" : "auto" }} // Теперь нет багов с `maxHeight`
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      >
+      {/* Лоадер и ошибки */}
+      {loading && <p className="text-[#7ad95f] text-lg">Loading...</p>}
+      {error && <p className="text-red-400">{error}</p>}
+
+      {/* Карточки */}
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-6 w-full overflow-hidden">
         <AnimatePresence>
           {coins.slice(0, visibleCount).map((coin) => {
-            const priceChange = coin.sparkline_in_7d.price;
-            const isGrowing =
-              priceChange[priceChange.length - 1] >= priceChange[0];
+            const priceChange = coin.price_change_1h;
+            const isGrowing = priceChange >= 0;
             const graphColor = isGrowing ? "#7ad95f" : "#ff4d4d";
 
             return (
-              <motion.div
-                key={coin.id}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.4 }}
-                className="flex justify-center py-6"
-              >
+              <motion.div key={coin.id} className="flex justify-center py-6">
                 <div className="border-2 bg-radial-[at_0%_100%] from-[#7ad95f]/20 to-[#0d0d0d] border-[#7ad95f] rounded-2xl p-5 flex flex-col justify-between w-100 h-100 transition-all duration-300 hover:scale-105">
                   {/* Заголовок */}
                   <div className="flex items-center justify-between">
@@ -80,7 +53,7 @@ export default function Portfolio() {
                       />
                       <div className="flex gap-2 items-end">
                         <span
-                          className={`text-3xl font-bold uppercase`}
+                          className="text-3xl font-bold uppercase"
                           style={{ color: graphColor }}
                         >
                           {coin.symbol}
@@ -101,15 +74,17 @@ export default function Portfolio() {
                     </span>
                   </div>
 
-                  {/* График (с заливкой) */}
-                  <div className="mt-4">
-                    <ResponsiveContainer width="100%" height={150}>
+                  {/* Изменение за 1 час */}
+                  <p className="text-lg mt-2" style={{ color: graphColor }}>
+                    {isGrowing ? "▲" : "▼"} {priceChange.toFixed(2)}%
+                  </p>
+
+                  {/* График - теперь выше и адаптивный */}
+                  {coin.sparkline.length > 0 ? (
+                    <ResponsiveContainer width="100%" height={200}>
+                      {/* Увеличена высота */}
                       <AreaChart
-                        data={coin.sparkline_in_7d.price.map((price, i) => ({
-                          price,
-                          i,
-                        }))}
-                        margin={{ top: 10, right: 20, left: 20, bottom: 10 }}
+                        data={coin.sparkline.map((price, i) => ({ price, i }))}
                       >
                         <defs>
                           <linearGradient
@@ -135,13 +110,17 @@ export default function Portfolio() {
                           type="monotone"
                           dataKey="price"
                           stroke={graphColor}
-                          strokeWidth={2}
+                          strokeWidth={3} /* Увеличена толщина линии */
                           fill={`url(#color${coin.id})`}
                           dot={false}
                         />
+                        <YAxis domain={["dataMin", "dataMax"]} hide />{" "}
+                        {/* Теперь график адаптивный */}
                       </AreaChart>
                     </ResponsiveContainer>
-                  </div>
+                  ) : (
+                    <p className="text-gray-500">No data available</p>
+                  )}
                 </div>
               </motion.div>
             );
@@ -149,7 +128,7 @@ export default function Portfolio() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Кнопка с анимацией */}
+      {/* Кнопка View More */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
