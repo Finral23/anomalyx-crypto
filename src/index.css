@@ -2,9 +2,20 @@
 
 @font-face {
   font-family: "GothamCond";
-  src: url("/GothamCond-Thin.woff2") format("woff2");
+  src: url("/fonts/GothamCond-Thin.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "HighRise";
+  src: url("/fonts/HighRise.ttf") format("true-type");
+  font-weight: 500;
+  font-style: bold;
+}
+
+.highrise {
+  font-family: "HighRise";
 }
 
 .gotham {
@@ -12,7 +23,7 @@
 }
 
 body {
-  background-color: black;
+  background-color: #0d0d0d;
   color: white;
 }
 

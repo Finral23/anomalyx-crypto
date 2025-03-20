@@ -3,7 +3,7 @@ import HeroInfo from "@/components/HeroInfo";
 
 export function Home() {
   return (
-    <section id="#home">
+    <section id="home">
       <GlowingCircles />
       <HeroInfo />
     </section>
