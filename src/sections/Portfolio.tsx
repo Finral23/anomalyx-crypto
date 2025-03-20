@@ -25,7 +25,10 @@ export default function Portfolio() {
   }, [expanded]);
 
   return (
-    <section className="max-w-4xl mx-auto py-16 px-5 lg:px-0 text-center">
+    <section
+      id="portfolio"
+      className="max-w-4xl mx-auto py-16 px-5 lg:px-0 text-center"
+    >
       <Heading>Build your own portfolio</Heading>
 
       {/* Лоадер и ошибки */}

@@ -1,6 +1,7 @@
 import { Layout } from "./layouts/Layout";
 import { Features } from "./sections/Features";
 import { Home } from "./sections/Home";
+import HowToBuy from "./sections/HowToBuy";
 import Portfolio from "./sections/Portfolio";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Home />
         <Features />
         <Portfolio />
+        <HowToBuy />
       </Layout>
     </>
   );
