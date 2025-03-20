@@ -12,7 +12,7 @@ export function Features() {
       {/* Grid контейнер */}
       <div className="relative grid grid-cols-1 md:grid-cols-2 grid-rows-4 md:grid-rows-2 gap-5 mt-10 w-full">
         {/* Первый блок (AI Insights) */}
-        <div className="relative flex flex-col justify-between text-[#7ad95f] rounded-4xl md:rounded-br-none bg-blur-2xl bg-radial-[at_100%_100%] from-[#7ad95f]/50 via-[#282828]  to-[#0d0d0d]">
+        <div className="relative flex flex-col justify-between text-[#7ad95f] rounded-4xl md:rounded-br-none bg-radial-[at_100%_100%] from-[#7ad95f]/50 via-[#282828] to-[#0d0d0d] transition-all duration-300 hover:scale-105">
           <div className="py-15 px-5 lg:pl-10 flex justify-between gap-5 lg:gap-20">
             <div className="text-end">
               <h3 className="text-4xl font-semibold pb-10">
@@ -34,7 +34,7 @@ export function Features() {
         </div>
 
         {/* Второй блок (Low Fees, вверху справа) */}
-        <div className="relative flex flex-col md:justify-between text-[#282828] rounded-4xl md:rounded-bl-none bg-[#7ad95f]">
+        <div className="relative flex flex-col md:justify-between text-[#282828] rounded-4xl md:rounded-bl-none bg-[#7ad95f] transition-all duration-300 hover:scale-105">
           <div className="py-15 px-5 flex justify-between gap-5 lg:gap-20">
             <span className="hidden md:block text-8xl highrise px-5">02</span>
             <div className="text-start">
@@ -56,7 +56,7 @@ export function Features() {
         </div>
 
         {/* Третий блок (Secure Transactions, внизу справа) */}
-        <div className="relative flex flex-col justify-between text-[#282828] rounded-4xl md:rounded-tr-none bg-[#7ad95f]">
+        <div className="relative flex flex-col justify-between text-[#282828] rounded-4xl md:rounded-tr-none bg-[#7ad95f] transition-all duration-300 hover:scale-105">
           <div className="pl-5 lg:pl-15 flex justify-between gap-5 lg:gap-20">
             <div className="text-end">
               <h3 className="px-5 md:px-0 text-4xl font-semibold pt-15 pb-10">
@@ -80,7 +80,7 @@ export function Features() {
         </div>
 
         {/* Четвёртый блок (Multi-Asset Trading, внизу слева) */}
-        <div className="relative flex flex-col justify-between text-[#7ad95f] rounded-4xl md:rounded-tl-none bg-blur-2xl bg-radial-[at_0%_0%] from-[#7ad95f]/50 via-[#282828] to-[#0d0d0d]">
+        <div className="relative flex flex-col justify-between text-[#7ad95f] rounded-4xl md:rounded-tl-none bg-blur-2xl bg-radial-[at_0%_0%] from-[#7ad95f]/50 via-[#282828] to-[#0d0d0d] transition-all duration-300 hover:scale-105">
           <div className="pr-5 lg:pr-15 flex justify-between gap-5 lg:gap-20">
             <img
               src="/bitcoin-br.png"

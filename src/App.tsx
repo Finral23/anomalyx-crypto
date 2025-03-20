@@ -1,6 +1,7 @@
 import { Layout } from "./layouts/Layout";
 import { Features } from "./sections/Features";
 import { Home } from "./sections/Home";
+import Portfolio from "./sections/Portfolio";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Layout>
         <Home />
         <Features />
+        <Portfolio />
       </Layout>
     </>
   );
