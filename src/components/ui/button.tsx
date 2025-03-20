@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[#7ad95f] text-black shadow-md hover:bg-lime-600 shadow-[0_0_10px_#00ff00]",
+          "bg-[#7ad95f] text-black shadow-md hover:bg-[#85f067] shadow-[0_0_30px_#66ff66]",
         neon: "bg-transparent border border-green-500 text-green-500 shadow-[0_0_10px_#00ff00] hover:bg-green-500 hover:text-black",
         outline: "border border-gray-500 text-white hover:bg-gray-700",
       },
