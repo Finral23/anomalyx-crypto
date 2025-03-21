@@ -1,5 +1,6 @@
 import { Layout } from "./layouts/Layout";
 import { Features } from "./sections/Features";
+import Form from "./sections/Form";
 import { Home } from "./sections/Home";
 import HowToBuy from "./sections/HowToBuy";
 import Portfolio from "./sections/Portfolio";
@@ -14,6 +15,7 @@ function App() {
         <Portfolio />
         <HowToBuy />
         <Testimonials />
+        <Form />
       </Layout>
     </>
   );

@@ -76,7 +76,10 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="w-full mx-auto text-center py-20 relative">
+    <section
+      id="testimonials"
+      className="w-full mx-auto text-center py-20 relative"
+    >
       {/* Заголовок */}
       <Heading>100% SATISFIED INVESTORS WORLDWIDE</Heading>
 
