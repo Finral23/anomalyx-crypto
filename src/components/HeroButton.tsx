@@ -36,7 +36,9 @@ const HeroButton = () => {
       />
 
       {/* Кнопка (из ShadCN UI) */}
-      <Button size="lg">Join the Club</Button>
+      <Button size="lg">
+        <a href="#contact">Join the Club</a>
+      </Button>
     </div>
   );
 };

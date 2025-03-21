@@ -13,7 +13,14 @@ export default function Portfolio() {
   // Функция переключения количества монет
   const toggleCoins = () => {
     if (!expanded) {
-      setVisibleCount(Math.min(8, coins.length));
+      setVisibleCount(Math.min(10, coins.length));
+    } else {
+      // Прокрутка к началу списка
+      setTimeout(() => {
+        document
+          .getElementById("portfolio")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
     }
     setExpanded(!expanded);
   };
