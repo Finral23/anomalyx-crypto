@@ -30,7 +30,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     if (!expanded) {
-      setTimeout(() => setVisibleCount(4), 300);
+      setTimeout(() => setVisibleCount(4), 500);
     }
   }, [expanded]);
 
@@ -137,7 +137,6 @@ export default function Portfolio() {
                             dot={false}
                           />
                           <YAxis domain={["dataMin", "dataMax"]} hide />{" "}
-                          {/* Теперь график адаптивный */}
                         </AreaChart>
                       </ResponsiveContainer>
                     ) : (

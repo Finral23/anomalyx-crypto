@@ -10,37 +10,37 @@ const testimonials = [
     name: "Michael Grishanov",
     title: "our site creator",
     text: "I've tried manual trading before, and it was stressful. AI Trade removes the emotional aspect of trading, making smart decisions based on real data.",
-    image: "/testimonials/Misha.png",
+    image: "/testimonials/Misha.webp",
   },
   {
     name: "Dmitry Manov",
     title: "Donbass founder",
     text: "I had zero experience with crypto, but this bot made everything so easy! The automated trades are spot on, and I don't have to spend hours analyzing charts.",
-    image: "/testimonials/Dima.png",
+    image: "/testimonials/Dima.webp",
   },
   {
     name: "Vladislav Sweetcockskiy",
     title: "Crypto Enthusiast",
     text: "What I love about AI Trade is that it charges no fees. You deposit, set your strategy, and the bot handles the rest.",
-    image: "/testimonials/Vlad.png",
+    image: "/testimonials/Vlad.webp",
   },
   {
     name: "Valera Sukhomlin",
     title: "Financial Advisor",
     text: "I was skeptical at first, but this trading AI surprised me. The analytics and automation are top-notch. Highly recommend!",
-    image: "/testimonials/Valera.png",
+    image: "/testimonials/Valera.webp",
   },
   {
     name: "Igor Pivovaroff",
     title: "Stock Trader",
     text: "I've been trading stocks for years, and this crypto bot feels like the future. No emotions, only data-driven decisions.",
-    image: "/testimonials/Igor.png",
+    image: "/testimonials/Igor.webp",
   },
   {
     name: "Michael Chveckson",
     title: "Investor",
     text: "Diversifying my portfolio was never this easy! AI Trade makes everything seamless, and I can focus on bigger things.",
-    image: "/testimonials/Michael.png",
+    image: "/testimonials/Michael.webp",
   },
 ];
 
@@ -59,8 +59,8 @@ const Testimonials = () => {
     autoplay: true,
     autoplaySpeed: 5000,
     arrows: false, // Отключаем встроенные стрелки
-    beforeChange: (oldIndex: number, newIndex: number) =>
-      setActiveIndex(newIndex), // Обновляем активный индекс
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    beforeChange: (_: number, newIndex: number) => setActiveIndex(newIndex), // Обновляем активный индекс
     responsive: [
       {
         breakpoint: 1024,
@@ -99,6 +99,7 @@ const Testimonials = () => {
             <img
               src={testimonial.image}
               alt={testimonial.name}
+              loading="lazy"
               className={`size-60 md:size-100 object-cover transition-all duration-500 ${
                 activeIndex === index ? "brightness-100" : "brightness-50"
               }`}
