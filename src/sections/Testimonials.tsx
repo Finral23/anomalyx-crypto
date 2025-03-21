@@ -2,6 +2,7 @@ import { useState } from "react";
 import Slider from "react-slick";
 import { Button } from "@/components/ui/button";
 import Heading from "@/components/Heading";
+import { useInView } from "react-intersection-observer";
 
 // Данные отзывов
 const testimonials = [
@@ -46,6 +47,7 @@ const testimonials = [
 const Testimonials = () => {
   const [slider, setSlider] = useState<Slider | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   // Настройки слайдера
   const settings = {
@@ -78,10 +80,17 @@ const Testimonials = () => {
   return (
     <section
       id="testimonials"
-      className="w-full mx-auto text-center py-20 relative"
+      className="w-full mx-auto text-center pb-10 relative"
     >
       {/* Заголовок */}
-      <Heading>100% SATISFIED INVESTORS WORLDWIDE</Heading>
+      <div
+        ref={ref}
+        className={`transition-all duration-700 ${
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
+        }`}
+      >
+        <Heading>100% SATISFIED INVESTORS WORLDWIDE</Heading>
+      </div>
 
       {/* Блок изображений */}
       <div className="relative flex justify-center items-center mt-10">
