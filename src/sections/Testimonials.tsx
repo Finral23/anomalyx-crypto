@@ -10,7 +10,7 @@ const testimonials = [
     name: "Michael Grishanov",
     title: "our site creator",
     text: "I've tried manual trading before, and it was stressful. AI Trade removes the emotional aspect of trading, making smart decisions based on real data.",
-    image: "/testimonials/Misha.webp",
+    image: "/testimonials/Grisha.webp",
   },
   {
     name: "Dmitry Manov",
